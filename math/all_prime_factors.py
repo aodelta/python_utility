@@ -19,7 +19,6 @@ def isPrime(number):
     return (prime, divisor)
 
 def reduce_with_power(diviseurs):
-    diviseurs.sort()
     diviseurs_with_powers = []
     diviseurs_dictionnary_powers = {}
     for diviseur in diviseurs:
