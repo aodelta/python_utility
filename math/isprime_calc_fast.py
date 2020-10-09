@@ -1,5 +1,5 @@
 # Guillaume Vanleene 2nd 9
-# Script prenant un nombre et donnant son diviseur s'il n'est pas premier en retour
+# Script prenant un nombre et donnant son diviseur s'il n'est pas premier en retour en utilisant une racine carré arroundie (+ rapide)
 from math import sqrt
 
 while(True):

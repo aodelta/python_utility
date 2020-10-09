@@ -1,3 +1,7 @@
+# Guillaume Vanleene 2nd 9
+# Script permettant l'affichage de facteurs communs sous forme de tableau ainsi que la réduction avec des puissances
+# Doc disponible
+
 from math import sqrt
 
 def isPrime(number):
@@ -71,12 +75,12 @@ while(True):
         else:
             left_number = int(left_number / diviseurs[i - 1])
         
-        if i == len(diviseurs) - 1:
-            space_required = (left_column_length - len(str(right_number))) * " "
-            print("{0}{1} | -".format(space_required, int(right_number)))
-        else:
+        if i != len(diviseurs) - 1:
             space_required = (left_column_length - len(str(left_number))) * " "
             print("{0}{1} | {2}".format(space_required, int(left_number), int(right_number)))
+        else:
+            space_required = (left_column_length - len(str(right_number))) * " "
+            print("{0}{1} | -".format(space_required, int(right_number)))
 
 
     diviseurs_with_power_dic = reduce_with_power(diviseurs)

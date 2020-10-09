@@ -1,3 +1,7 @@
+# Guillaume Vanleene 2020
+# Script permetant de trier tout les nomds des fichiers dans un dossier en supprimant les charactères inutiles au début, à la fin, et en replacant l'index au début
+# s'il y en a un
+
 import pathlib
 import sys
 

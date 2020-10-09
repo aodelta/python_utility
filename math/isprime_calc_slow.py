@@ -1,3 +1,6 @@
+# Guillaume Vanleene 2nd 9
+# Script prenant un nombre et donnant son diviseur s'il n'est pas premier en retour en boucle brute (lent)
+
 while(True):
     try:
         number = int(input(" > "))
