@@ -4,16 +4,16 @@
 
 from math import sqrt
 
-def isPrime(number):
+def is_prime(number):
     if number == 1:
         return (True, 1)
     if number <= 0:
-        raise "{0} is not a valid number".format(number)
+        raise ValueError
 
-    numberSqrtArround = round(sqrt(number))
+    number_sqrt_arround = round(sqrt(number))
     prime = True
     divisor = number
-    for i in range(2, numberSqrtArround):
+    for i in range(2, number_sqrt_arround):
         if number % i == 0:
             divisor = i
             prime = False
@@ -32,7 +32,7 @@ def reduce_with_power(diviseurs):
     return diviseurs_dictionnary_powers
 
 
-initialNumber = None
+initial_number = None
 diviseurs = []
 
 print("Veuillez choisir le nombre à tester :")
@@ -54,9 +54,9 @@ while(True):
         continue
     else:
         print("")
-        initialNumber = number
+        initial_number = number
         while(True):
-            (prime, divisor) = isPrime(number)
+            (prime, divisor) = is_prime(number)
             diviseurs.append(int(divisor))
             if not prime:
                 number /= divisor
@@ -65,13 +65,13 @@ while(True):
     
     diviseurs_str = [str(x) for x in diviseurs]
 
-    left_column_length = len(str(initialNumber))
+    left_column_length = len(str(initial_number))
 
     left_number = None
     for i, number in enumerate(diviseurs):
         right_number = number
         if i == 0:
-            left_number = initialNumber
+            left_number = initial_number
         else:
             left_number = int(left_number / diviseurs[i - 1])
         
@@ -86,10 +86,13 @@ while(True):
     diviseurs_with_power_dic = reduce_with_power(diviseurs)
     diviseurs_with_power_str = ""
     for i, (number, power) in enumerate(diviseurs_with_power_dic.items()):
+        exposant = ""
+        if power != 1:
+            exposant = "^{0}".format(power)
         if i == len(diviseurs_with_power_dic) - 1:
-            diviseurs_with_power_str += "{0}^{1}".format(number, power)
+            diviseurs_with_power_str += "{0}{1}".format(number, exposant)
         else:
-            diviseurs_with_power_str += "{0}^{1} * ".format(number, power)
+            diviseurs_with_power_str += "{0}{1} * ".format(number, exposant)
 
 
     print("\n{0}\n".format(diviseurs_with_power_str))
