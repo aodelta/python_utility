@@ -6,16 +6,16 @@
 from math import sqrt
 
 # Simple fonction pour tester si le nombre donné est premier. Si vérifié, retourne True et son diviseur. Sinon, retourne False et le nombre donné.
-def isPrime(number):
+def is_prime(number):
     if number == 1: # 1 est fondamentalement premier
         return (True, 1)
     if number <= 0:
-        raise "{0} is not a valid number".format(number) # On "lève" une erreur car ce n'est pas censé se produire
+        raise ValueError # On "lève" l'erreur classique de python pour une valeur incorret car ce n'est pas censé se produire
 
-    numberSqrtArround = round(sqrt(number)) # Récupérer la racine carré
+    number_sqrt_arround = round(sqrt(number)) # Récupérer la racine carré
     prime = True
     divisor = number # Si le nombre est premier, cela sera la valeur retournée
-    for i in range(2, numberSqrtArround): # Pour chaque nombre comprit entre 2 et la valeur arrondie de la racine carré du nombre d'entré
+    for i in range(2, number_sqrt_arround): # Pour chaque nombre comprit entre 2 et la valeur arrondie de la racine carré du nombre d'entré
         if number % i == 0: # S'il peut être divisé (résultat de la division entier (= sans reste (= où le reste est égal à 0)))
             divisor = i # Le diviseur retourné devient i, le diviseur vérifié
             prime = False # Le nombre n'est donc pas premier
@@ -33,7 +33,7 @@ def reduce_with_power(diviseurs):
 
     return diviseurs_dictionnary_powers
 
-initialNumber = None
+initial_number = None
 diviseurs = []
 
 print("Veuillez choisir le nombre à tester :")
@@ -54,10 +54,10 @@ while(True):
         print("1 est fondamentalement premier")
         continue
     else:
-        print("")
-        initialNumber = number
+        print("") # On appelle la fonction print en lui donnant une chaîne de charactère vide pour passer une ligne
+        initial_number = number
         while(True):
-            (prime, divisor) = isPrime(number) # On test si number est premier
+            (prime, divisor) = is_prime(number) # On test si number est premier
             diviseurs.append(int(divisor)) # Quoiqu'il arrive, on l'ajoute au diviseur en le convertissant en int (par précaution)
             if not prime: # S'il n'est pas premier, alors on peut recommencer la boucle pour chercher le prochain diviseur
                 number /= divisor
@@ -81,7 +81,7 @@ while(True):
     # On calcule d'abord la taille maximum de la colone de droite, qui est donc le plus grand nombre le nombre de départ
     # On doit pour connaître la taille d'un nombre le convertir en chaîne de charactère puis appeler la fonction len(), fonction "clé" de python toujours disponible
     #   à qui on donne en paramètre notre chaîne de charactère (ou un tableau par exemple), et elle nous renvoie sa taille, soit le nombre de lettres (ou d'élément pout un tableau)
-    left_column_length = len(str(initialNumber)) # La taille maximum des nombres de la colones de gauche est forcement celle du plus grand, celui d'origine
+    left_column_length = len(str(initial_number)) # La taille maximum des nombres de la colones de gauche est forcement celle du plus grand, celui d'origine
 
     # Le nombre de la colone de gauche, à assigner après (on crée la variable maintenant pou éviter de devoir la re-créer en permanance dans la boucle (+ performance))
     left_number = None
@@ -89,7 +89,7 @@ while(True):
                                             # (valeur (number) = diviseur, index (i) = combient-ième élément dans la liste, sa position)
         right_number = number # Le nombre dans la colone de droite égal au diviseur actuel
         if i == 0: # Si c'est la première ligne du tableau
-            left_number = initialNumber # Le nombre de gauche est juste le nombre de départ
+            left_number = initial_number # Le nombre de gauche est juste le nombre de départ
         else: # Sinon
             # On divise nous même le nombre de gauche (égal au précédant dans la boucle) par l'ancien diviseur en utlisant un index avec - 1 car on sait qu'il existait
             #   quelqu'un chose avant
@@ -108,11 +108,14 @@ while(True):
     diviseurs_with_power_dic = reduce_with_power(diviseurs) # On récupère les puissances dans un dictionnaire (voir la définition de la fonction plus haut)
     diviseurs_with_power_str = ""
     for i, (number, power) in enumerate(diviseurs_with_power_dic.items()): # Pour chaque item du dictionnaire et son index
+        exposant = "" # On créer une variable exposant vide (au cas où l'exposant serait de un)
+        if power != 1: # Si la puissance n'est pas de une
+            exposant = "^{0}".format(power) # On créer la chaîne de charactère adapté pour montrer l'exposant
         if i != len(diviseurs_with_power_dic) - 1: # Si ce n'est pas le dernier élément
-            diviseurs_with_power_str += "{0}^{1} * ".format(number, power) # On rajoute a la variable le nombre * sa puissance et un * pour le prochain nombre
+            diviseurs_with_power_str += "{0}{1} * ".format(number, exposant) # On rajoute a la variable le nombre * sa puissance et un * pour le prochain nombre
         else:
-            diviseurs_with_power_str += "{0}^{1}".format(number, power) # On fait comme avant, mais sans le * car il n'y a rien après
+            diviseurs_with_power_str += "{0}{1}".format(number, exposant) # On fait comme avant, mais sans le * car il n'y a rien après
 
 
-    print("\n{0}\n".format(diviseurs_with_power_str)) # On écrit le tout avec des \n pour aller à la ligne, espacer le tout
+    print("\n{0}\n".format(diviseurs_with_power_str)) # On écrit le tout avec des \n pour aller à la ligne, pour espacer le tout
     diviseurs = [] # On réinitialise le tableau des diviseurs, pour éviter les bugs lors de la prochaine entrée
