@@ -11,13 +11,10 @@ while(True):
 
     if number < 0:
         print("Nombre négatif interdit")
-        continue
     if number == 0:
         print("Division par zéro interdite")
-        continue
     if number == 1:
         print("1 est fondamentalement premier")
-        continue
     else :
         numberSqrtArround = round(sqrt(number))
         prime = True
