@@ -15,7 +15,7 @@ def is_prime(number):
     number_sqrt_arround = round(sqrt(number)) # Récupérer la racine carré
     prime = True
     divisor = number # Si le nombre est premier, cela sera la valeur retournée
-    for i in range(2, number_sqrt_arround): # Pour chaque nombre comprit entre 2 et la valeur arrondie de la racine carré du nombre d'entré
+    for i in range(2, number_sqrt_arround + 1): # Pour chaque nombre comprit entre 2 et la valeur arrondie de la racine carré du nombre d'entré + 1 (pour éviter certains problèmes)
         if number % i == 0: # S'il peut être divisé (résultat de la division entier (= sans reste (= où le reste est égal à 0)))
             divisor = i # Le diviseur retourné devient i, le diviseur vérifié
             prime = False # Le nombre n'est donc pas premier
@@ -47,10 +47,10 @@ while(True):
     if number < 0:
         print("Nombre négatif interdit")
         continue
-    if number == 0:
+    elif number == 0: # Elif, car aucun des if ne peux être exécuté deux fois (éviter les checks inutiles)
         print("Division par zéro interdite")
         continue
-    if number == 1:
+    elif number == 1:
         print("1 est fondamentalement premier")
         continue
     else:
