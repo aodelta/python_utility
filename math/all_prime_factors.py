@@ -9,11 +9,11 @@ def is_prime(number):
         return (True, 1)
     if number <= 0:
         raise ValueError
-
+   
     number_sqrt_arround = round(sqrt(number))
     prime = True
     divisor = number
-    for i in range(2, number_sqrt_arround):
+    for i in range(2, number_sqrt_arround + 1):
         if number % i == 0:
             divisor = i
             prime = False
@@ -46,10 +46,10 @@ while(True):
     if number < 0:
         print("Nombre négatif interdit")
         continue
-    if number == 0:
+    elif number == 0:
         print("Division par zéro interdite")
         continue
-    if number == 1:
+    elif number == 1:
         print("1 est fondamentalement premier")
         continue
     else:
