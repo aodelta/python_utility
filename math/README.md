@@ -8,6 +8,6 @@
 
 # Fichier
 
- - *all_prime_factor.py* : script permettant d'**afficher les facteurs premier d'un nombre** sous forme de tableau et de multiplicateur avec exposant en ligne
+ - *all_prime_factors.py* : script permettant d'**afficher les facteurs premier d'un nombre** sous forme de tableau et de multiplicateur avec exposant en ligne
 - *is_prime_fast.py* : script permettant de savoir si un nombre est premier en utilisant la racine carré arroundi du nombre +1 pour plus de vitesse
 - *is_prime_slow.py* : script permettant de savoir si un nombre est premier en testant chaque nombre le précédant (assez lent pour les gros nombres, mais sûr)
