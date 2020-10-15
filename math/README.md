@@ -8,6 +8,10 @@
 
 # Fichier
 
- - *all_prime_factors.py* : script permettant d'**afficher les facteurs premier d'un nombre** sous forme de tableau et de multiplicateur avec exposant en ligne
-- *is_prime_fast.py* : script permettant de savoir si un nombre est premier en utilisant la racine carré arroundi du nombre +1 pour plus de vitesse
-- *is_prime_slow.py* : script permettant de savoir si un nombre est premier en testant chaque nombre le précédant (assez lent pour les gros nombres, mais sûr)
+### arithmetique
+ - v 2.0 *facteurs_premiers.py* : script permettant d'**afficher les facteurs premier d'un nombre** sous forme de tableau et de multiplicateur avec exposant en ligne
+ - v 2.0 *est_premier.py* : script permettant de **savoir si un nombre est premier**
+
+### geometrie
+ - v 1.0 *distance_entre_2_points.py* : script permettant de **connaître la distance entre deux points** données par coordonnées
+ - v 1.0 *milieu_entre_2_points.py* : script permettant de *connaître les coordonnées du milieu de 2 autres points* données par coordonnées
