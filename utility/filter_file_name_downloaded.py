@@ -5,7 +5,7 @@
 import pathlib
 import sys
 
-def rename_all_files_in_dir(dir, firstChar = 0, latestChar = 0, _sorted = False):
+def rename_all_files_in_dir(dir, first_char = 0, latest_char = 0, _sorted = False):
 
    output = ['', []]
    error_occured = False
@@ -41,7 +41,7 @@ def rename_all_files_in_dir(dir, firstChar = 0, latestChar = 0, _sorted = False)
                   output[1] += ('ERROR GET INDEX', file_name)
 
                # Removing start & end
-               file_name = file_name[firstChar:len(file_name) - latestChar - len(path.suffix)] + file_name[len(file_name) - len(path.suffix):]
+               file_name = file_name[first_char:len(file_name) - latest_char - len(path.suffix)] + file_name[len(file_name) - len(path.suffix):]
 
                new_name = "#{0} {1}".format(file_index, file_name)
 
@@ -55,7 +55,7 @@ def rename_all_files_in_dir(dir, firstChar = 0, latestChar = 0, _sorted = False)
             directory = path.parent
 
             # Removing start & end
-            file_name = file_name[firstChar:len(file_name) - latestChar - len(path.suffix)] + file_name[len(file_name) - len(path.suffix):]
+            file_name = file_name[first_char:len(file_name) - latest_char - len(path.suffix)] + file_name[len(file_name) - len(path.suffix):]
 
             new_name = "{0}".format(file_name)
 
@@ -70,8 +70,8 @@ def rename_all_files_in_dir(dir, firstChar = 0, latestChar = 0, _sorted = False)
 
 
 directory = ""
-latestChar = 0
-firstChar = 0
+latest_char = 0
+first_char = 0
 _sorted = False
 
 # Dir
@@ -82,22 +82,21 @@ while(True):
       sys.exit(0)
    if not pathlib.Path(directory).exists():
       print("Not a valid path")
-      pass
    else:
       break
 
 # FirstChar
 while(True):
    print("How many char to remove at the begining : ")
-   firstChar = input(" > ")
-   if firstChar == "q" or firstChar == "quit":
+   first_char = input(" > ")
+   if first_char == "q" or first_char == "quit":
       sys.exit(0)
-   if firstChar == "":
-      firstChar = 0
+   if first_char == "":
+      first_char = 0
       break
    try:
-      firstChar = int(firstChar)
-   except ValueError or firstChar < 0:
+      first_char = int(first_char)
+   except (ValueError, first_char < 0) as Exception:
       print("Not a valid number")
    else:
       break
@@ -105,15 +104,15 @@ while(True):
 # Latest Char
 while(True):
    print("How many char to remove at the end : ")
-   latestChar = input(" > ")
-   if latestChar == "q" or latestChar == "quit":
+   latest_char = input(" > ")
+   if latest_char == "q" or latest_char == "quit":
       sys.exit(0)
-   if latestChar == "":
-      latestChar = 0
+   if latest_char == "":
+      latest_char = 0
       break
    try:
-      latestChar = int(latestChar)
-   except ValueError or latestChar < 0:
+      latest_char = int(latest_char)
+   except (ValueError, latest_char < 0) as Exception:
       print("Not a valid number")
    else:
       break
@@ -135,7 +134,7 @@ while(True):
    else:
       print("Not a valid answer")
 
-result = rename_all_files_in_dir(directory, firstChar, latestChar, _sorted)
+result = rename_all_files_in_dir(directory, first_char, latest_char, _sorted)
 
 if result[0] == 0:
    print("\nL'opération à bien réussie")
