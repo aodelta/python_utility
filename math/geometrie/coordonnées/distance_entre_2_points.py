@@ -49,10 +49,10 @@ def distance_entre_2_points_calc():
         distance = round(sqrt(pow(B_coordonnées[1] - A_coordonnées[1], 2) + pow(B_coordonnées[2] - A_coordonnées[2], 2)), 3)
 
         if distance < 0:
-            print("La distance est inférieure à 0 ? :", distance)
+            print("\nLa distance est inférieure à 0 ? :", distance, "\n")
             continue
         
-        print("La distance est de", distance)
+        print("\nLa distance est de", distance, "\n")
 
 if __name__ == "__main__":
     distance_entre_2_points_calc()

@@ -51,7 +51,7 @@ def distance_entre_2_points_calc():
         if milieu[1].is_integer():
             milieu[1] = int(milieu[1])
         
-        print("Le mileu est de : ({0} ; {1})".format(milieu[0], milieu[1]))
+        print("\nLe mileu est de : ({0} ; {1})\n".format(milieu[0], milieu[1]))
 
 if __name__ == "__main__":
     distance_entre_2_points_calc()
