@@ -1,6 +1,6 @@
 # Guillaume Vanleene 2nd 9
 # Script permettant de connaître la distance entre 2 points donnés par coordonnés
-# v 1.0
+# v 1.1
 
 from math import sqrt, pow
 

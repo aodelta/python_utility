@@ -1,6 +1,6 @@
 # Guillaume Vanleene 2nd 9
 # Script permettant de connaître la distance entre 2 points donnés par coordonnés
-# v 1.0
+# v 1.1
 
 def milieu_entre_2_points(A_coordonnées, B_coordonnées):
     return [round((A_coordonnées[0] + B_coordonnées[0]) / 2, 3), round((A_coordonnées[1] + B_coordonnées[1]) / 2, 3)]
