@@ -7,7 +7,7 @@ def est_premier(nombre):
     if nombre < 0 or nombre == 0:
         raise ValueError
     elif nombre == 1:
-        return (True, None)
+        return (False, None)
     else:
         nombre_sqrt_arroundi = round(sqrt(nombre))
         premier = True
@@ -34,7 +34,7 @@ def est_premier_calc():
         elif nombre == 0:
             print("Division par zéro interdite")
         elif nombre == 1:
-            print("1 est fondamentalement premier")
+            print("1 n'est fondamentalement pas premier")
         else :
             nombre_sqrt_arroundi = round(sqrt(nombre))
             premier = True
