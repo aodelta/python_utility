@@ -1,58 +1,44 @@
 # Guillaume Vanleene 2nd 9
 # Script permettant de connaître la distance entre 2 points donnés par coordonnés
-# v 1.1
+# v 1.2
 
 from math import sqrt, pow
 
-def distance_entre_2_points(A_coordonnées, B_coordonnées):
-    return round(sqrt(pow(B_coordonnées[0] - A_coordonnées[0], 2) + pow(B_coordonnées[1] - A_coordonnées[1], 2)), 3)
+# distance entre 2 coordonnées = sqrt( ( Xb - Xa )^2 + ( Yb - Ya )^2 )
+def distance_entre_2_points(a_coordonnees, b_coordonnees):
+    return round(sqrt(pow(b_coordonnees[0] - a_coordonnees[0], 2) + pow(b_coordonnees[1] - a_coordonnees[1], 2)), 3)
+
+def demande_coordonnees(coordonnees_nom):
+    print("Coordonnées du point {0} (x y): ".format(coordonnees_nom))
+
+    coordonnees = [None] * 2
+
+    while(True):
+        user_input = input(" > ").split(" ")
+        
+        try:
+            coordonnees[0] = int(user_input[0])
+        except (ValueError, IndexError):
+            print("Abscisse incorrect")
+            continue
+        try:
+            coordonnees[1] = int(user_input[1])
+        except (ValueError, IndexError):
+            print("Ordonnée incorrecte")
+            continue
+        break
+    return coordonnees
 
 def distance_entre_2_points_calc():
     while(True):
-        A_coordonnées = [None] * 3
-        B_coordonnées = [None] * 3
 
-        print("Coordonnées du point A (x y): ")
+        # On calcule la distance avec les coordonnées qu'on a demandé. Simple, compressé, et efficace
+        distance = distance_entre_2_points(demande_coordonnees("A"), demande_coordonnees("B"))
 
-        while(True):
-            A_coordonnées[0] = input(" > ").split(" ")
-                
-            try:
-                A_coordonnées[1] = int(A_coordonnées[0][0])
-            except (ValueError, IndexError):
-                print("Abscisse incorrect")
-                continue
-            try:
-                A_coordonnées[2] = int(A_coordonnées[0][1])
-            except (ValueError, IndexError):
-                print("Ordonnée incorrecte")
-                continue
-            break
-
-        print("Coordonnées du point B (x y): ")
-        
-        while(True):
-            B_coordonnées[0] = input(" > ").split(" ")
-            
-            try:
-                B_coordonnées[1] = int(B_coordonnées[0][0])
-            except (ValueError, IndexError):
-                print("Abscisse incorrect")
-                continue
-            try:
-                B_coordonnées[2] = int(B_coordonnées[0][1])
-            except (ValueError, IndexError):
-                print("Ordonnée incorrecte")
-                continue
-            break
-
-        distance = round(sqrt(pow(B_coordonnées[1] - A_coordonnées[1], 2) + pow(B_coordonnées[2] - A_coordonnées[2], 2)), 3)
-
-        if distance < 0:
-            print("\nLa distance est inférieure à 0 ? :", distance, "\n")
-            continue
-        
-        print("\nLa distance est de", distance, "\n")
+        if distance < 0: # Erreur, une distance entre 2 points ne peut pas être négative
+            print("\nLa distance est inférieure à 0 ? impossible : {0}\n".format(distance))
+        else:
+            print("\nLa distance est de", distance, "\n")
 
 if __name__ == "__main__":
     distance_entre_2_points_calc()
