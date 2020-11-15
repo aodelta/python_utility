@@ -6,28 +6,29 @@ from math import sqrt, pow
 
 # distance entre 2 coordonnées = sqrt( ( Xb - Xa )^2 + ( Yb - Ya )^2 )
 def distance_entre_2_points(a_coordonnees, b_coordonnees):
-    return round(sqrt(pow(b_coordonnees[0] - a_coordonnees[0], 2) + pow(b_coordonnees[1] - a_coordonnees[1], 2)), 3)
+    return round(sqrt(pow(b_coordonnees[0][0] - a_coordonnees[0][0], 2) + pow(b_coordonnees[0][1] - a_coordonnees[0][1], 2)), 3)
 
-def demande_coordonnees(coordonnees_nom):
-    print("Coordonnées du point {0} (x y): ".format(coordonnees_nom))
+def demande_coordonnees(coordonnee_nom):
+    print("Coordonnées du point {0} (x y): ".format(coordonnee_nom))
 
-    coordonnees = [None] * 2
+    # ( [x, y], nom )
+    coordonnee = ([None] * 2, coordonnee_nom)
 
     while(True):
         user_input = input(" > ").split(" ")
         
         try:
-            coordonnees[0] = int(user_input[0])
+            coordonnee[0][0] = int(user_input[0])
         except (ValueError, IndexError):
             print("Abscisse incorrect")
             continue
         try:
-            coordonnees[1] = int(user_input[1])
+            coordonnee[0][1] = int(user_input[1])
         except (ValueError, IndexError):
             print("Ordonnée incorrecte")
             continue
         break
-    return coordonnees
+    return coordonnee
 
 def distance_entre_2_points_calc():
     while(True):
