@@ -26,5 +26,7 @@ La version reflet doit être spécifiée.
 
 ### Version
 Toutes versions de script est sous la forme suivante : **x**.**y**
-Le **x** désigne la version de la fonction principale
-Le **y** désigne la version de l'implémentation dans le script, l'affichage, la logique ...
+Le **x** désigne la version de la fonction principale, ou de la logique derrière, l'algorithme
+Le **y** désigne la version de l'implémentation dans le script, l'affichage ...
+La version x doit toujours être a jour, car elle est mise ajour lors de bug majeur
+La version y est réinitialisé lors de la maj de la version x
