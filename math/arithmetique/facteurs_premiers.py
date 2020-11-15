@@ -3,11 +3,28 @@
 # Doc disponible
 # v 2.0
 
-# Dépendances :
-# - is_prime.py : https://github.com/aodelta/python_utility/blob/main/math/is_prime.py
+# Reflets :
+# 1 - est_premier.py v2 : https://github.com/aodelta/python_utility/blob/main/math/is_prime.py
 
 from math import sqrt
-from is_prime import is_prime
+
+# Reflet 1
+def est_premier(nombre):
+    if nombre < 0 or nombre == 0:
+        raise ValueError
+    elif nombre == 1:
+        return (False, None)
+    else:
+        nombre_sqrt_arroundi = round(sqrt(nombre))
+        premier = True
+        diviseur = nombre
+        for i in range(2, nombre_sqrt_arroundi + 1):
+            if nombre % i == 0:
+                premier = False
+                diviseur = i
+                break
+
+        return (premier, diviseur)
 
 def reduire_en_puissance(diviseurs):
     diviseurs.sort()
@@ -29,7 +46,7 @@ def facteurs_premiers(nombre_tab):
     else:
         diviseurs = []
         while(True):
-            (premier, diviseur) = is_prime(nombre_tab)
+            (premier, diviseur) = est_premier(nombre_tab)
             diviseurs.append(int(diviseur))
             if not premier:
                 nombre_tab /= diviseur
@@ -66,7 +83,7 @@ def facteurs_premiers_calc():
             print("")
             nombre_initial = nombre_tab
             while(True):
-                (premier, diviseurs) = is_prime(nombre_tab)
+                (premier, diviseurs) = est_premier(nombre_tab)
                 diviseurs.append(int(diviseurs))
                 if not premier:
                     nombre_tab /= diviseurs
