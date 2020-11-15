@@ -1,7 +1,7 @@
 # Guillaume Vanleene 2nd 9
 # Script permettant l'affichage de facteurs communs sous forme de tableau ainsi que la réduction avec des puissances
 # Doc disponible
-# v 2.0
+# v 2.1
 
 # Reflets :
 # 1 - est_premier.py v2 : https://github.com/aodelta/python_utility/blob/main/math/is_prime.py
@@ -124,4 +124,5 @@ def facteurs_premiers_calc():
         diviseurs = []
 
 if __name__ == "__main__":
+    print("math/arithmetique/facteurs_premiers.py\n")
     facteurs_premiers_calc()

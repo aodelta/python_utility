@@ -1,6 +1,7 @@
 # Guillaume Vanleene 2nd 9
 # Script prenant un nombre et donnant son diviseur s'il n'est pas premier en retour en utilisant une racine carré arroundie (+ rapide)
-# v 2.0
+# v 2.1
+
 from math import sqrt
 
 def est_premier(nombre):
@@ -48,4 +49,5 @@ def est_premier_calc():
                 print(nombre, "est premier")
 
 if __name__ == "__main__":
+    print("math/arithmetique/est_premier.py\n")
     est_premier_calc()
