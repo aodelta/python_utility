@@ -1,6 +1,6 @@
 # Guillaume Vanleene 2nd 9
 # Script permettant de savoir si les 3 points donnés forment un triangle rectangle
-# v 1.1
+# v 2.0
 
 # Reflets :
 # 1 - distance_entre_2_points.py v2 : https://github.com/aodelta/python_utility/blob/main/math/is_prime.py
@@ -11,15 +11,22 @@ from math import sqrt
 def distance_entre_2_points(a_coordonnees, b_coordonnees):
     return round(sqrt(pow(b_coordonnees[0] - a_coordonnees[0], 2) + pow(b_coordonnees[1] - a_coordonnees[1], 2)), 3)
 
+def point_commun(distance_a, distances_b):
+    for point_a in distance_a:
+        for point_b in distances_b:
+            if point_a == point_b:
+                return point_a
+
+# coordonnees : [ ( [x, y], "point" ) ] * 3
 def est_triangle_rectangle(coordonnees):
     distances = [None] * 3
 
     for i in range(3): # Calcul des distances entre les 3 points
-        distances[i] = distance_entre_2_points(coordonnees[i][0], coordonnees[i-1][0])
+        distances[i] = [distance_entre_2_points(coordonnees[i][0], coordonnees[i-1][0]), coordonnees[i][1] + coordonnees[i-1][1]]
 
     for i in range(3): # Pour chaque point, vérifier si la distance qui lui est lié au carré est égal a la somme des deux autres au carré
-        if(round(distances[i]**2) == round(distances[i-1]**2 + distances[i-2]**2)):
-            return (True, coordonnees[i+1][1])
+        if(round(distances[i][0]**2) == round(distances[i-1][0]**2 + distances[i-2][0]**2)):
+            return (True, point_commun(distances[i-1][1], distances[i-2][1]))
     return (False, None)
 
 def demande_coordonnees(coordonnees_nom):
