@@ -1,7 +1,7 @@
 # Guillaume Vanleene 2nd 9
 # Script permettant l'affichage de facteurs communs sous forme de tableau ainsi que la réduction avec des puissances
 # Doc disponible
-# v 3.0
+# v 3.1
 
 # Reflets :
 # 1 - est_premier.py v2 : https://github.com/aodelta/python_utility/blob/main/math/is_prime.py
@@ -37,7 +37,6 @@ def reduire_en_puissance(diviseurs):
     
     return diviseurs_dictionnary_powers
 
-
 def facteurs_premiers(nombre_tab):
     if nombre_tab < 0 or nombre_tab == 0:
         raise ValueError
@@ -58,6 +57,48 @@ def facteurs_premiers(nombre_tab):
             diviseurs_avec_puissance_tab.append([nombre_tab, puissance_tab])
         return diviseurs_avec_puissance_tab
 
+def afficher_tableau(nombre_initial, diviseurs):
+    taille_column_gauche = len(str(nombre_initial))
+    nombre_gauche = None
+    for i, nombre_tab in enumerate(diviseurs):
+        nombre_droite = nombre_tab
+        if i == 0:
+            nombre_gauche = nombre_initial
+        else:
+            nombre_gauche = int(nombre_gauche / diviseurs[i - 1])
+        
+        if i != len(diviseurs) - 1:
+            espace_requis = (taille_column_gauche - len(str(nombre_gauche))) * " "
+            print("{0}{1} | {2}".format(espace_requis, int(nombre_gauche), int(nombre_droite)))
+        else:
+            espace_requis = (taille_column_gauche - len(str(nombre_droite))) * " "
+            print("{0}{1} | -".format(espace_requis, int(nombre_droite)))
+
+
+    diviseurs_avec_puissance_dic = reduire_en_puissance(diviseurs)
+    diviseurs_avec_puissance_str = ""
+    for i, (nombre_tab, puissance_tab) in enumerate(diviseurs_avec_puissance_dic.items()):
+        exposant = ""
+        if puissance_tab != 1:
+            exposant = "^{0}".format(puissance_tab)
+        if i == len(diviseurs_avec_puissance_dic) - 1:
+            diviseurs_avec_puissance_str += "{0}{1}".format(nombre_tab, exposant)
+        else:
+            diviseurs_avec_puissance_str += "{0}{1} * ".format(nombre_tab, exposant)
+
+
+    print("\n{0}\n".format(diviseurs_avec_puissance_str))
+
+def trouver_diviseurs(nombre_initial):
+    diviseurs = []
+    while(True):
+        (premier, diviseur) = est_premier(nombre_initial)
+        diviseurs.append(int(diviseur))
+        if not premier:
+            nombre_initial /= diviseur
+        else:
+            return diviseurs
+
 def facteurs_premiers_calc():
     nombre_initial = None
     diviseurs = []
@@ -65,62 +106,25 @@ def facteurs_premiers_calc():
     print("Veuillez choisir le nombre à tester :")
     while(True):
         try:
-            nombre_tab = int(input(" > "))
+            nombre_input = int(input(" > "))
         except ValueError:
             print("Ceci n'est pas un chiffre")
             continue
 
-        if nombre_tab < 0:
+        if nombre_input < 0:
             print("Nombre négatif interdit")
             continue
-        elif nombre_tab == 0:
+        elif nombre_input == 0:
             print("Division par zéro interdite")
             continue
-        elif nombre_tab == 1:
+        elif nombre_input == 1:
             print("1 est fondamentalement premier")
             continue
         else:
             print("")
-            nombre_initial = nombre_tab
-            while(True):
-                (premier, diviseur) = est_premier(nombre_tab)
-                diviseurs.append(int(diviseur))
-                if not premier:
-                    nombre_tab /= diviseur
-                else:
-                    break
-
-        taille_column_gauche = len(str(nombre_initial))
-
-        nombre_gauche = None
-        for i, nombre_tab in enumerate(diviseurs):
-            nombre_droite = nombre_tab
-            if i == 0:
-                nombre_gauche = nombre_initial
-            else:
-                nombre_gauche = int(nombre_gauche / diviseurs[i - 1])
-            
-            if i != len(diviseurs) - 1:
-                espace_requis = (taille_column_gauche - len(str(nombre_gauche))) * " "
-                print("{0}{1} | {2}".format(espace_requis, int(nombre_gauche), int(nombre_droite)))
-            else:
-                espace_requis = (taille_column_gauche - len(str(nombre_droite))) * " "
-                print("{0}{1} | -".format(espace_requis, int(nombre_droite)))
-
-
-        diviseurs_avec_puissance_dic = reduire_en_puissance(diviseurs)
-        diviseurs_avec_puissance_str = ""
-        for i, (nombre_tab, puissance_tab) in enumerate(diviseurs_avec_puissance_dic.items()):
-            exposant = ""
-            if puissance_tab != 1:
-                exposant = "^{0}".format(puissance_tab)
-            if i == len(diviseurs_avec_puissance_dic) - 1:
-                diviseurs_avec_puissance_str += "{0}{1}".format(nombre_tab, exposant)
-            else:
-                diviseurs_avec_puissance_str += "{0}{1} * ".format(nombre_tab, exposant)
-
-
-        print("\n{0}\n".format(diviseurs_avec_puissance_str))
+            nombre_initial = nombre_input
+            diviseurs = trouver_diviseurs(nombre_initial)
+        afficher_tableau(nombre_initial, diviseurs)
         diviseurs = []
 
 if __name__ == "__main__":
