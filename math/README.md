@@ -8,7 +8,7 @@
 ### coordonnées
  - v 1.3 *distance_entre_2_points.py* : script permettant de **connaître la distance entre deux points** données par coordonnées
  - v 1.2 *milieu_entre_2_points.py* : script permettant de *connaître les coordonnées du milieu de 2 autres points* données par coordonnées
- - v 1.1 *est_triangle_rectangle.py* : script permmetant de savoir si 3 coordonnées forment un triangle rectangle
+ - v 2.0 *est_triangle_rectangle.py* : script permmetant de savoir si 3 coordonnées forment un triangle rectangle
 
  ### triangles
- - v 1.0 *est_rectangle.py* : script permettant de savoir si un triangle est rectangle en lui donnant 3 longueurs
+ - v 1.1 *est_rectangle.py* : script permettant de savoir si un triangle est rectangle en lui donnant 3 longueurs
