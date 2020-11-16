@@ -1,8 +1,8 @@
-# Fichier
+# Scripts
 
 ## arithmetique
- - v 3.0 *facteurs_premiers.py* : script permettant d'**afficher les facteurs premier d'un nombre** sous forme de tableau et de multiplicateur avec exposant en ligne
  - v 2.1 *est_premier.py* : script permettant de **savoir si un nombre est premier**
+ - v 3.1 *facteurs_premiers.py* : script permettant d'**afficher les facteurs premier d'un nombre** sous forme de tableau et de multiplicateur avec exposant en ligne
 
 ## geometrie
 ### coordonnées
