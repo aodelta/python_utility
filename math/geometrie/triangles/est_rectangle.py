@@ -1,6 +1,6 @@
 # Guillaume Vanleene 2nd 9
 # Script permettant de savoir si un triangle est rectangle en lui donnant ses 3 longueurs
-# v 1.1
+# v 2.0
 
 def point_commun(distance_a, distances_b):
     for point_a in distance_a:
@@ -35,12 +35,13 @@ def demander_longueur(nom_longueur):
             return (longueur, nom_longueur)
 
 def est_rectangle_calc():
-    (resultat, point_angle_droit) = est_rectangle([demander_longueur("AB"), demander_longueur("AC"), demander_longueur("BC")])
+    while True:
+        (resultat, point_angle_droit) = est_rectangle([demander_longueur("AB"), demander_longueur("AC"), demander_longueur("BC")])
 
-    if resultat:
-        print("\nLe triangle est rectangle en {0}".format(point_angle_droit))
-    else:
-        print("\nLe triangle n'est pas rectangle")
+        if resultat:
+            print("\nLe triangle est rectangle en {0}\n".format(point_angle_droit))
+        else:
+            print("\nLe triangle n'est pas rectangle\n")
 
 if __name__ == "__main__":
     print("math/geométrie/triangles/est_rectangle.py\n")

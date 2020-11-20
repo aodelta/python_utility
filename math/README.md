@@ -11,4 +11,4 @@
  - v 2.0 *est_triangle_rectangle.py* : script permmetant de savoir si 3 coordonnées forment un triangle rectangle
 
  ### triangles
- - v 1.1 *est_rectangle.py* : script permettant de savoir si un triangle est rectangle en lui donnant 3 longueurs
+ - v 2.0 *est_rectangle.py* : script permettant de savoir si un triangle est rectangle en lui donnant 3 longueurs
